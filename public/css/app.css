@@ -1,0 +1,15 @@
+#banner {
+  background: url('/images/class.jpg') fixed center no-repeat;
+  background-size: cover;
+  color:white;
+  text-shadow: -1px 1px 0 #000,
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+}
+
