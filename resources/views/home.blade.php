@@ -9,4 +9,7 @@
 				<h2>because all students are individuals.</h2>
 		</div>
 	</div>
+	<div class="col-4" id="events">
+		
+	</div>
 @endsection
