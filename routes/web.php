@@ -11,6 +11,12 @@
 |
 */
 
+Route::domain('admin.lighthouse.test')->group(function(){
+	Route::get('/', function(){
+		return view('admin.dashboard');
+	});
+});
+
 Route::get('/', function () {
     return view('home');
 });
