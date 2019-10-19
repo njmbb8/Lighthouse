@@ -4,6 +4,7 @@
 		@yield('pagecss')
     	@include('layouts.partials.head')
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -11,10 +12,13 @@
         		@include('admin.navbar')
 
         		<main class="py-4">
-            		@yield('content')
+					<div class="container">
+            			@yield('content')
+					</div>
         		</main>
     		</div>
 		</div>
 	</body>
     @include('layouts.partials.footer-scripts')
+    @yield('pagescripts')
 </html>

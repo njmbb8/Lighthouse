@@ -9,7 +9,34 @@
 				<h2>because all students are individuals.</h2>
 		</div>
 	</div>
-	<div class="col-4" id="events">
-		
+	<div class="container">
+		<div class="col-4" id="events">
+			<div class="card">
+				<div class="card-title">
+					Upcoming Events:
+				</div>
+			</div>
+			@foreach($events as $event)
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">
+							{{$event->name}}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="container">
+							<div class="card-text mb-2">
+								{{$event->eventStart . ' - ' . $event->eventEnd}}
+							</div>
+							<a href="/event/{{$event->id}}" class="stretched-link"></a>
+						</div>
+					</div>
+				</div>
+			@endforeach
+		</div>
 	</div>
+@endsection
+
+@section('pagescripts')
+	<script src="{{asset('js/home.js')}}"></script>
 @endsection

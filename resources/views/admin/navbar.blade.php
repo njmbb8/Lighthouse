@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 	<div class="container">
 		<a class="navbar-brand" href="#">
 			<img src="/images/logo.png" style="width:60px;">Lighthouse of Learning
@@ -9,15 +9,15 @@
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item active">
-	          <a class="nav-link" href="#">Dashboard
+	          <a class="nav-link" href="/">Dashboard
 	                <span class="sr-only">(current)</span>
 	              </a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#about">Events</a>
+	          <a class="nav-link" href="/events">Events</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#staff">Users</a>
+	          <a class="nav-link" href="/users">Users</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#contact">Page Info</a>

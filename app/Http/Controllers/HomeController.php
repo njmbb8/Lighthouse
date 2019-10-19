@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //
     }
 
     /**
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $events = DB::table('events')->orderBy('eventStart', 'desc')->limit(10)->get();
+
+        foreach($events as $event){
+            $event->eventStart = date('m/d/Y H:i', strtotime($event->eventStart));
+            $event->eventEnd = date('m/d/Y H:i', strtotime($event->eventEnd));
+        }
+
+        return view('home', compact('events'));
     }
 }

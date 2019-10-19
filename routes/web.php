@@ -12,22 +12,22 @@
 */
 
 Route::domain('admin.lighthouse.test')->group(function(){
-	Route::get('/', function(){
-		return view('admin.dashboard');
-	});
+	Route::get('/', 'DashController@getStats')->middleware('auth');
+
+	Route::get('/events', 'EventController@adminEventView')->middleware('auth');
+
+	Route::post('/addevent', 'EventController@handleForm')->middleware('auth');
+
+	Route::get('/getevent/{id}', 'EventController@getEventJSON');
+
+	Route::post('/updateevent', 'EventController@updateEevent')->middleware('auth');
 });
 
-Route::get('/', function () {
-    return view('home');
+Route::domain('lighthouse.test')->group(function(){
+	Route::get('/', 'HomeController@index');
+	Route::get('/event/{id}', 'EventController@paginateEvent');
+	Route::get('/events/{pagenum?}', 'EventController@eventListView');
 });
 
-//user registration and login routes
-Route::get('/register', 'RegistrationController@create');
-Route::post('register', 'RegistrationController@store');
- 
-Route::get('/login', 'SessionsController@create');
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
+
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
