@@ -29,6 +29,7 @@
                 <form action="/addevent" method="POST" enctype="multipart/form-data" id="eventForm">
                     @csrf
                     <input type="hidden" id="eventID" name="eventID">
+                    <input type="hidden" id="removeImages" name="removeImages">
                     <div class="form-row">
                         <div class="col">
                             <label for="eventNameInput">Event Name</label>
@@ -48,6 +49,9 @@
                             <label for="eventEndPicker">End Date</label>
                             <input type="text" class="dtpick form-control" id="eventEndPicker" name="eventEnd">
                         </div>
+                    </div>
+                    <div class="form-row overflow-auto" id="files">
+                        some text
                     </div>
                     <div class="form-row" id="browseFiles">
                         <div class="col">

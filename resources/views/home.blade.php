@@ -33,6 +33,7 @@
 					</div>
 				</div>
 			@endforeach
+			<a href="/events">View all events</a>
 		</div>
 	</div>
 @endsection

@@ -8,9 +8,9 @@
         @php
             $i = 0;
             $active = 'active';
+            $directory = 'storage/events/'.$event->id;
 
-            if(file_exists('storage/' . $event->id)){
-                $directory = 'storage/' . $event->id;
+            if(file_exists($directory)){
                 $scanned_directory = array_diff(scandir($directory), array('..', '.'));
 
                 foreach($scanned_directory as $file){

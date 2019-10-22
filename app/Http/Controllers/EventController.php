@@ -13,12 +13,23 @@ class EventController extends Controller
     }
     
     public function getEventByID($eventID){
-        return DB::table('events')->where('id', $eventID)->first();
+        $event = DB::table('events')->where('id', $eventID)->first();
+        $event->dir = 'storage/events/' . $event->id;
+        if(file_exists($event->dir)){
+            $scanned_directory = array_diff(scandir($event->dir), array('..', '.'));
+            $photoArray;
+            foreach($scanned_directory as $photo){
+                $photoArray[] = $photo;
+            }
+            $event->photos = $photoArray;
+        }
+
+        return $event;
     }
 
     public function newEvent(Request $request){
 
-        $eventID = DB::table('events')->insertGetId([
+        $event = DB::table('events')->insertGetId([
             'name'=>$request->name,
             'about'=>$request->about,
             'location'=>$request->location,
@@ -29,9 +40,9 @@ class EventController extends Controller
 
         
         if($request->hasFile('photos')){
-            Storage::makeDirectory('events' . $eventID);
+            Storage::makeDirectory('public/events/' . $request->eventID);
             foreach($request->file('photos') as $photo){
-                $photo->store($eventID . "/");
+                $photo->store('public/events/' . $request->eventID . '/');
             }
         }
     }
@@ -43,6 +54,22 @@ class EventController extends Controller
         $location = $request->location;
         $eventStart = $request->eventStart;
         $eventEnd = $request->eventEnd;
+        $directory = 'public/events/' . $request->eventID;
+
+        if($request->hasFile('photos')){
+            if(!is_dir($directory)){
+                Storage::makeDirectory($directory);
+            }
+            foreach($request->file('photos') as $photo){
+                $photo->store($directory);
+            }
+        }
+
+        $removeFileNames = explode(" ", $request->removeImages);
+
+        foreach($removeFileNames as $file){
+            Storage::delete($directory . '/' . $file);
+        }
 
         DB::table('events')
                 ->where('id', $eventID)
@@ -51,10 +78,13 @@ class EventController extends Controller
                             'location'=>$location,
                             'eventStart'=>$eventStart,
                             'eventEnd'=>$eventEnd]);
+
+        
     }
 
     public function deleteEvent(Request $request){
         DB::table('events')->where('id', $request->eventID)->delete();
+        Storage::deleteDirectory('public/events/' . $request->eventID);
     }
 
     public function adminEventView(){
@@ -73,19 +103,19 @@ class EventController extends Controller
     }
 
     public function eventListView($pageNum = 0){
-        $offset = $pageNum + 10;
+        $offset = $pageNum * 10;
         $events = $this->getEvents($offset);
 
         foreach($events as $event){
             $event->eventStart = date('m/d/Y H:i', strtotime($event->eventStart));
             $event->eventEnd = date('m/d/Y H:i', strtotime($event->eventEnd));
         }
-
-        return view('events', compact('events'));
+        
+        return view('events')->with(compact('events'))->with(compact('pageNum'));
     }
 
     public function getEventJson($eventID){
-        $event = DB::table('events')->where('id', $eventID)->first();
+        $event = $this->getEventByID($eventID);
 
         return response()->json($event);
     }

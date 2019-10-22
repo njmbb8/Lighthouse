@@ -22,7 +22,24 @@ $(document).ready(function(){
             $('#eventEndPicker').val(activeEvent.eventEnd);
             $('#aboutTextArea').val(activeEvent.about);
             $('#addBtnRow').addClass('d-none');
-            $('#updateRemoveBtnRow').removeClass('d-none');
+            $('#updateRemoveBtnRow').removeClass('d-none');  
+
+            if(activeEvent.photos){
+                activeEvent.photos.forEach(function(photo, key){
+                    $("#files").prepend('<img id="'+ key +'" src="../storage/events/'+ activeEvent.id + '/' + photo +'" class="img-thumbnail eventPhoto" style="max-height: 200px;"/>');
+                });
+
+                $('.eventPhoto').click(function(e){
+                    if(!$(e.target).hasClass('bg-primary')){
+                        $(e.target).addClass('bg-primary');
+                        $('#removeImages').val($('#removeImages').val() + activeEvent.photos[$(e.target).attr('id')] + ' ');
+                    }
+                    else{
+                        $(e.target).removeClass('bg-primary');
+                        $('#removeImages').val($('#removeImages').val().replace(activeEvent.photos[$(e.target).attr('id')], ''));
+                    }
+                })
+            }
         });
     })
 
@@ -40,6 +57,8 @@ $(document).ready(function(){
             $('#aboutTextArea').val('');
             $('#addBtnRow').removeClass('d-none');
             $('#updateRemoveBtnRow').addClass('d-none');
+            $('#removeImages').empty();
+            $('#files').html('');
         }
     })
 })
