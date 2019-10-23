@@ -15,6 +15,7 @@ $(document).ready(function(){
 
         $.get('getevent/'+$(activeCard).attr('id').split('#')[1], function(data){
             activeEvent = data;
+            $("#files").html('');
             $('#eventID').val(activeEvent.id);
             $('#eventNameInput').val(activeEvent.name);
             $('#locationInput').val(activeEvent.location);

@@ -27,6 +27,7 @@ Route::domain('lighthouse.test')->group(function(){
 	Route::get('/', 'HomeController@index');
 	Route::get('/event/{id}', 'EventController@paginateEvent');
 	Route::get('/events/{pagenum?}', 'EventController@eventListView');
+	Route::get('/getEventRange', 'EventController@getEventsByDate');
 });
 
 

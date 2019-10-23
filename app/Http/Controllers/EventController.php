@@ -17,7 +17,7 @@ class EventController extends Controller
         $event->dir = 'storage/events/' . $event->id;
         if(file_exists($event->dir)){
             $scanned_directory = array_diff(scandir($event->dir), array('..', '.'));
-            $photoArray;
+            $photoArray = [];
             foreach($scanned_directory as $photo){
                 $photoArray[] = $photo;
             }
@@ -118,6 +118,12 @@ class EventController extends Controller
         $event = $this->getEventByID($eventID);
 
         return response()->json($event);
+    }
+
+    public function getEventsByDate(Request $request){
+        $ret = DB::table('events')->whereBetween('eventStart', [$request->start, $request->end])->get();
+
+        return response()->json($ret);
     }
 
     public function handleForm(Request $request){

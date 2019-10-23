@@ -17,4 +17,5 @@
 		</div>
 	</body>
     @include('layouts.partials.footer-scripts')
+	@yield('pagescripts')
 </html>
