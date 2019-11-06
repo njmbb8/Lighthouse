@@ -10,30 +10,55 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="col-4" id="events">
-			<div class="card">
-				<div class="card-title">
-					Upcoming Events:
-				</div>
-			</div>
-			@foreach($events as $event)
+		<div class="row">
+			<div class="col-4" id="events">
 				<div class="card">
-					<div class="card-header">
-						<div class="card-title">
-							{{$event->name}}
-						</div>
-					</div>
-					<div class="card-body">
-						<div class="container">
-							<div class="card-text mb-2">
-								{{$event->eventStart . ' - ' . $event->eventEnd}}
-							</div>
-							<a href="/event/{{$event->id}}" class="stretched-link"></a>
-						</div>
+					<div class="card-title">
+						Upcoming Events:
 					</div>
 				</div>
-			@endforeach
-			<a href="/events">View all events</a>
+				@foreach($events as $event)
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">
+								{{$event->name}}
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="container">
+								<div class="card-text mb-2">
+									{{$event->eventStart . ' - ' . $event->eventEnd}}
+								</div>
+								<a href="/event/{{$event->id}}" class="stretched-link"></a>
+							</div>
+						</div>
+					</div>
+				@endforeach
+				<a href="/events">View all events</a>
+			</div>
+			<div class="col" id="announcements">
+				<div class="card">
+					<div class="card-title">
+						Announcements:
+					</div>
+				</div>
+				@foreach($announcements as $announcement)
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">
+								{{$announcement->title}}
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="container">
+								<div class="card-text mb-2">
+									{{$announcement->content}}
+								</div>
+							</div>
+						</div>
+					</div>
+				@endforeach
+			</div>
 		</div>
 	</div>
 @endsection

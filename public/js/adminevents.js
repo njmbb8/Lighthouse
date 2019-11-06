@@ -13,7 +13,7 @@ $(document).ready(function(){
         $(activeCard[0].children[0]).addClass('bg-primary');
         $(activeCard[0].children[1]).addClass('bg-info');
 
-        $.get('getevent/'+$(activeCard).attr('id').split('#')[1], function(data){
+        $.get('getevent/'+$(activeCard).attr('id'), function(data){
             activeEvent = data;
             $("#files").html('');
             $('#eventID').val(activeEvent.id);

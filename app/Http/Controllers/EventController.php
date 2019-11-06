@@ -40,9 +40,9 @@ class EventController extends Controller
 
         
         if($request->hasFile('photos')){
-            Storage::makeDirectory('public/events/' . $request->eventID);
+            Storage::makeDirectory('public/events/' . $event);
             foreach($request->file('photos') as $photo){
-                $photo->store('public/events/' . $request->eventID . '/');
+                $photo->store('public/events/' . $event . '/');
             }
         }
     }

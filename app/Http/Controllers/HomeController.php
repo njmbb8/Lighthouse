@@ -31,6 +31,10 @@ class HomeController extends Controller
             $event->eventEnd = date('m/d/Y H:i', strtotime($event->eventEnd));
         }
 
-        return view('home', compact('events'));
+        $announcements = DB::table('announcements')->orderBy('updated_at', 'desc')->limit(10)->get();
+
+        
+
+        return view('home', compact('events'))->with(compact('announcements'));
     }
 }

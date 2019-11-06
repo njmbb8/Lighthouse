@@ -20,7 +20,7 @@
                     }
 
                     echo "<div class='carousel-item $active'>
-                            <img src='../$directory/$file' alt='...' style='max-height: 600px;'>
+                            <img src='/$directory/$file' alt='...' style='max-height: 600px;'>
                         </div>\n";
 
                     $i++;
@@ -43,12 +43,11 @@
                     Until: {{$event->eventEnd}}
                     </h5>
                 </div>
-                <div class="col text-right">
-                    <img src="../images/calendar.png" class="img-thumbnail" style="max-height:200px;">
-                </div>
             </div>
             <div class="row">
-                <p>{{$event->about}}</p>
+                <div class="col">
+                    <p>{{$event->about}}</p>
+                </div>
             </div>
         </div>
     </div>

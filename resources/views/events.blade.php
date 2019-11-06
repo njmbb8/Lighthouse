@@ -3,8 +3,8 @@
 @section('title', 'events')
 
 @section('pagecss')
-    <link href="js/lib/fullcalendar/packages/core/main.css" rel="stylesheet">
-    <link href="js/lib/fullcalendar/packages/daygrid/main.css" rel="stylesheet">
+    <link href="/js/lib/fullcalendar/packages/core/main.css" rel="stylesheet">
+    <link href="/js/lib/fullcalendar/packages/daygrid/main.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -37,7 +37,7 @@
 @endsection
 
 @section('pagescripts')
-    <script src="js/lib/fullcalendar/packages/core/main.js"></script>
-    <script src="js/lib/fullcalendar/packages/daygrid/main.js"></script>
-    <script src="js/events.js"></script>
+    <script src="/js/lib/fullcalendar/packages/core/main.js"></script>
+    <script src="/js/lib/fullcalendar/packages/daygrid/main.js"></script>
+    <script src="/js/events.js"></script>
 @endsection

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-sm-3">
                 @foreach($initEvents as $event)
-                <div class="card" id="#{{$event->id}}">
+                <div class="card" id="{{$event->id}}">
 					<div class="card-header">
 						<div class="card-title">
 							{{$event->name}}

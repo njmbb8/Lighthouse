@@ -15,12 +15,16 @@ Route::domain('admin.lighthouse.test')->group(function(){
 	Route::get('/', 'DashController@getStats')->middleware('auth');
 
 	Route::get('/events', 'EventController@adminEventView')->middleware('auth');
-
 	Route::post('/addevent', 'EventController@handleForm')->middleware('auth');
-
 	Route::get('/getevent/{id}', 'EventController@getEventJSON');
-
 	Route::post('/updateevent', 'EventController@updateEevent')->middleware('auth');
+	
+	Route::get('/announcements', 'AnnouncementController@adminAnnouncementsView')->middleware('auth');
+	Route::post('/announcementsAction', 'AnnouncementController@announcementsFormAction');
+	Route::get('/getAnnouncement/{id}', 'AnnouncementController@getAnnouncementJSON');
+
+	
+
 });
 
 Route::domain('lighthouse.test')->group(function(){
