@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="form-row overflow-auto" id="files">
-                        some text
+                    
                     </div>
                     <div class="form-row" id="browseFiles">
                         <div class="col">

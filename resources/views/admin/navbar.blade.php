@@ -26,7 +26,7 @@
 	        	<a class="nav-link" href="#activities">News</a>
 	        </li>
 	        <li class="nav-item">
-	        	<a class="nav-link" href="forms.html">Forms</a>
+	        	<a class="nav-link" href="/forms">Forms</a>
 	        </li>
 	      </ul>
 	    </div>

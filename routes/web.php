@@ -12,9 +12,9 @@
 */
 
 Route::domain('admin.lighthouse.test')->group(function(){
-	Route::get('/', 'DashController@getStats')->middleware('auth');
+	Route::get('/', 'DashController@getStats')->middleware('auth')->name('admin_dashboard');
 
-	Route::get('/events', 'EventController@adminEventView')->middleware('auth');
+	Route::get('/events', 'EventController@adminEventView')->middleware('auth')->name('admin_events');
 	Route::post('/addevent', 'EventController@handleForm')->middleware('auth');
 	Route::get('/getevent/{id}', 'EventController@getEventJSON');
 	Route::post('/updateevent', 'EventController@updateEevent')->middleware('auth');
@@ -23,14 +23,16 @@ Route::domain('admin.lighthouse.test')->group(function(){
 	Route::post('/announcementsAction', 'AnnouncementController@announcementsFormAction');
 	Route::get('/getAnnouncement/{id}', 'AnnouncementController@getAnnouncementJSON');
 
-	
+	Route::get('/forms', 'FormsController@formView');	
+	Route::post('/formsAction', 'FormsController@formAction');
+	Route::get('/getform/{id}','FormsController@getForm');
 
 });
 
 Route::domain('lighthouse.test')->group(function(){
-	Route::get('/', 'HomeController@index');
-	Route::get('/event/{id}', 'EventController@paginateEvent');
-	Route::get('/events/{pagenum?}', 'EventController@eventListView');
+	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/event/{id}', 'EventController@paginateEvent')->name('event');
+	Route::get('/events/{pagenum?}', 'EventController@eventListView')->name('events');
 	Route::get('/getEventRange', 'EventController@getEventsByDate');
 });
 
