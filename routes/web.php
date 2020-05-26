@@ -11,7 +11,7 @@
 |
 */
 
-Route::domain('admin.lighthouse.test')->group(function(){
+Route::domain('admin.lighthouse.test')->middleware(['AuthCheck'])->group(function(){
 	Route::get('/', 'DashController@getStats')->middleware('auth')->name('admin_dashboard');
 
 	Route::get('/events', 'EventController@adminEventView')->middleware('auth')->name('admin_events');
@@ -34,6 +34,7 @@ Route::domain('lighthouse.test')->group(function(){
 	Route::get('/event/{id}', 'EventController@paginateEvent')->name('event');
 	Route::get('/events/{pagenum?}', 'EventController@eventListView')->name('events');
 	Route::get('/getEventRange', 'EventController@getEventsByDate');
+	Route::get('/forms/{pagenum?}', 'FormsController@formsList');
 });
 
 
