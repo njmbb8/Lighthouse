@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AuthCheckMiddleware
 {
@@ -15,7 +16,7 @@ class AuthCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->role_id < 0){
+        if($request->user()->role_id >= 3){
             abort(404);
         }
         else{

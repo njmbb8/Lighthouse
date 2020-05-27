@@ -23,7 +23,7 @@
             @endforeach
         </div>
         <div class="col">
-            <form action="/formsAction" method="POST" enctype="multipart/form-data" id="formForm">
+            <form action="/userFormAction" method="POST" enctype="multipart/form-data" id="formForm">
                 @csrf
                 <input type="hidden" id="formID" name="id">
                 <div class="form-row">

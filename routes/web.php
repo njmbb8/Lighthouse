@@ -27,6 +27,10 @@ Route::domain('admin.lighthouse.test')->middleware(['AuthCheck'])->group(functio
 	Route::post('/formsAction', 'FormsController@formAction');
 	Route::get('/getform/{id}','FormsController@getForm');
 
+	Route::get('/users', 'UsersController@returnView');
+	Route::get('/getUser/{id}', 'UsersController@getUser');
+	Route::post('/userFormAction', 'UsersController@formHandler');
+
 });
 
 Route::domain('lighthouse.test')->group(function(){
