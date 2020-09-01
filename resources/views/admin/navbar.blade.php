@@ -14,20 +14,35 @@
 	              </a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/events">Events</a>
+	          <a class="nav-link {{Route::is('events') ? 'active' : ''}}" href="/events">Events</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/users">Users</a>
+	          <a class="nav-link {{Route::is('userss') ? 'active' : ''}}" href="/users">Users</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/announcements">Announcements</a>
+	          <a class="nav-link {{Route::is('announcements') ? 'active' : ''}}" href="/announcements">Announcements</a>
 	        </li>
 	        <li class="nav-item">
-	        	<a class="nav-link" href="#activities">News</a>
+	        	<a class="nav-link {{Route::is('videos') ? 'active' : ''}}" href="/videos">Videos</a>
 	        </li>
 	        <li class="nav-item">
-	        	<a class="nav-link" href="/forms">Forms</a>
+	        	<a class="nav-link {{Route::is('forms') ? 'active' : ''}}" href="/forms">Forms</a>
 	        </li>
+			@if(Auth::guest())
+				<li class="nav-item">
+					<a class="nav-link" href="/login">Log In</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/register">Register<a>
+				</li>
+			@else
+				<li class="nav-item">
+						<p>Hello, {{Auth::user()->fname}} </p>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Log Out</a>
+				</li>
+			@endif
 	      </ul>
 	    </div>
 	</div>

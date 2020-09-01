@@ -33,6 +33,10 @@ class HomeController extends Controller
 
         $announcements = DB::table('announcements')->orderBy('updated_at', 'desc')->limit(10)->get();
 
+        foreach($announcements as $announcement){
+            $announcement->sample = substr($announcement->content, 0, 250);
+        }
+
         
 
         return view('home', compact('events'))->with(compact('announcements'));

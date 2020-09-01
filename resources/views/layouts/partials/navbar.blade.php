@@ -12,32 +12,26 @@
 	          <a class="nav-link" href="/">Home</a>
 	        </li>
 	        <li class="nav-item {{Route::is('about') ? 'active' : ''}}">
-	          <a class="nav-link" href="#about">About Us</a>
+	          <a class="nav-link" href="/about">About Us</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#staff">Staff</a>
+	        <li class="nav-item {{Route::is('staff') ? 'active' : ''}}">
+	          <a class="nav-link" href="/staff">Staff</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#contact">Contact Us</a>
+	        <li class="nav-item {{Route::is('contact') ? 'active' : ''}}">
+	          <a class="nav-link" href="/contact">Contact Us</a>
 	        </li>
-	        <li class="nav-item">
-	        	<a class="nav-link {{Route::is('events') ? 'active' : ''}}" href="/events">Events</a>
+			<li class="nav-item {{Route::is('announcements') ? 'active' : ''}}">
+				<a class="nav-link" href="/announcements">Announcements</a>
+			</li>
+			<li class="nav-item {{Route::is('videos') ? 'active' : ''}}">
+				<a class="nav-link" href="/videos">Videos</a>
+			</li>
+	        <li class="nav-item {{Route::is('events') ? 'active' : ''}}">
+	        	<a class="nav-link" href="/events">Events</a>
 	        </li>
-	        <li class="nav-item">
-	        	<a class="nav-link" href="forms.html">Forms</a>
+	        <li class="nav-item {{Route::is('forms') ? 'active' : ''}}">
+	        	<a class="nav-link" href="/forms">Forms</a>
 	        </li>
-			@if(Auth::guest())
-				<li class="nav-item">
-					<a class="nav-link" href="/login">Log In</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/register">Register<a>
-				</li>
-			@else
-				<li class="nav-item">
-					<a class="nav-link" href="/account">Account</a>
-				</li>
-			@endif
 	      </ul>
 	    </div>
 	</div>

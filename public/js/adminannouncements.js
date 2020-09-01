@@ -30,6 +30,8 @@ $(document).ready(function(){
             $(activeCard[0].children[1]).removeClass('bg-info');
             $("#announcementTitle").val('');
             $("#announcementText").val('');
+            $("#addBtnRow").removeClass('d-none');
+            $("#updateRemoveBtnRow").addClass('d-none');
         }
     })
 })

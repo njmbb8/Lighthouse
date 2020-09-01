@@ -19,11 +19,15 @@
                                 <div class="card-text mb-2">
                                     {{$forms[$i+$j]->description}}
                                 </div>
+                                <a href="/storage/forms/{{$forms[$i+$j]->id}}/{{$forms[$i+$j]->filename}}" class="stretched-link"></a>
                             </div>
                         </div>
                     </div>
                     @if($i == 0)
                         <div class="col-lg-4"></div>
+                    @endif
+                    @if(sizeof($forms) == 1)
+                        @break
                     @endif
                 @endfor
             </div>

@@ -16,8 +16,8 @@ class AuthCheckMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->role_id >= 3){
-            abort(404);
+        if(Auth::guest() || $request->user()->role_id >= 3){
+            return redirect('/login');
         }
         else{
             return $next($request);

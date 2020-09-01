@@ -52,12 +52,14 @@
 						<div class="card-body">
 							<div class="container">
 								<div class="card-text mb-2">
-									{{$announcement->content}}
+									{{$announcement->sample}}
 								</div>
+								<a href="/announcement/{{$announcement->id}}" class="stretched-link"></a>
 							</div>
 						</div>
 					</div>
 				@endforeach
+				<a href="/announcements">View all announcements</a>
 			</div>
 		</div>
 	</div>

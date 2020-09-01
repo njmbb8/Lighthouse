@@ -15,7 +15,15 @@ class FormsController extends Controller
 
     public function addForm(Request $request){
         $highID = DB::table('forms')->select('id')->orderBy('id', 'desc')->first();
-        $currID = $highID->id + 1;
+
+        if(!isset($highID)){
+            $highID = 0;
+        }
+        else{
+            $highID = $highID->id;
+        }
+
+        $currID = $highID + 1;
         $dir = '/public/forms/'.$currID;
         $savePath = '';
         if($request->hasFile('formUpload')){
@@ -32,10 +40,13 @@ class FormsController extends Controller
             }
         }
 
+        $filename = explode('/', $path);
+        $filename = $filename[count($filename) - 1];
+
         DB::table('forms')->insert([
             "title" => $request->title,
             "description" => $request->description,
-            "path" => $path,
+            "filename" => $filename,
             'updated_at' => date("Y-m-d H:i:s"),
             'created_at' => date("Y-m-d H:i:s"),
             'user_id' => $request->user()->id,
@@ -52,10 +63,13 @@ class FormsController extends Controller
             $path = $request->path;
         }
 
+        $filename = explode('/', $path);
+        $filename = $filename[count($filename) - 1];
+
         DB::table('forms')->where('id', $request->id)->update([
             "title" => $request->title,
             "description" => $request->description,
-            "path" => $path,
+            "filename" => $path,
             'updated_at' => date("Y-m-d H:i:s"),
             'user_id' => $request->user()->id,
             'thumbnail' => $path.'/thumbnail.jpg'
@@ -80,7 +94,7 @@ class FormsController extends Controller
             $this->updateForm($request);
         }
         else if($request->action == "remove"){
-            $tihs->removeForm($request);
+            $this->removeForm($request);
         }
         return redirect('/forms');
     }

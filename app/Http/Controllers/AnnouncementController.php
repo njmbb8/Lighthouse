@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class AnnouncementController extends Controller
 {
-    public function getAnnouncements($offset = 0, $limit = 0){
+    public function getAnnouncements($offset = 0, $limit = 10){
         $announcements = DB::table('announcements')->orderBy('updated_at', 'desc')->skip($offset)->take($limit)->get();
 
         return $announcements;
@@ -64,6 +64,27 @@ class AnnouncementController extends Controller
     public function adminAnnouncementsView(){
         $announcements = $this->getAnnouncements(0, 10);
 
+        foreach($announcements as $announcement){
+            $announcement->sample = substr($announcement->content, 0, 100);
+        }
+
         return view('admin.announcements')->with(compact('announcements'));
+    }
+
+    public function announcementView($announcementID){
+        $announcement = $this->getAnnouncement($announcementID);
+
+        return view('announcement', compact('announcement'));
+    }
+
+    public function announcementListView($pageNum = 0){
+        $offset = $pageNum * 10;
+        $announcements = $this->getAnnouncements($offset);
+
+        foreach($announcements as $announcement){
+            $announcement->sample = substr($announcement->content, 0, 500);
+        }
+        
+        return view('announcements')->with(compact('announcements'))->with(compact('pageNum'));
     }
 }

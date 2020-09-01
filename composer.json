@@ -11,8 +11,11 @@
         "php": "^7.2",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "lakshmaji/thumbnail": "^1.4",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "pbmedia/laravel-ffmpeg": "^7.0",
+        "php-ffmpeg/php-ffmpeg": "^0.16.0",
         "spatie/pdf-to-image": "^1.8"
     },
     "require-dev": {

@@ -11,7 +11,7 @@
                         </div>
                         <div class="card-body">
                             <div class="card-text">
-                                {{$announcement->content}}
+                                {{$announcement->sample}}
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-row">
                         <label for="announcementText">Announcement:</label>
-                        <textarea class="form-control" id="announcementText" rows="10" name="content"></textarea>
+                        <textarea class="form-control" id="announcementText" rows="10" name="content" style="white-space: pre-line; white-space: pre-wrap;"></textarea>
                     </div>
                     <div class="form-row" id="addBtnRow">
                         <button type="submit" name="action" value="add" class="btn btn-primary" id="newAnnouncementBtn">Add New Event</button>
